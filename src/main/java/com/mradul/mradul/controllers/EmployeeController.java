@@ -31,9 +31,18 @@ public class EmployeeController {
 
     @GetMapping
     public List<EmployeeDTO> getAllEmployees() {
-
+        return employeeService.getAllEmployees();
     }
-    
+
+    @DeleteMapping(path = "/{id}")
+    public String deleteEmployeeById(@PathVariable UUID id) {
+        return employeeService.deleteEmployeeById(id);
+    }
+
+    @PutMapping(path = "/{id}")
+    public EmployeeDTO updateEmployeeById(@PathVariable UUID id, @RequestBody EmployeeDTO employeeDTO) {
+        return employeeService.updateEmployeeById(id, employeeDTO);
+    }
 
     @PostMapping(produces = "application/json", consumes = "application/json")
     public EmployeeDTO createEmployee(@RequestBody EmployeeDTO employeeDTO) {

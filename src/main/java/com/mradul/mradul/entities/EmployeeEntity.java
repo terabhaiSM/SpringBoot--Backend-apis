@@ -4,6 +4,8 @@ import java.util.UUID;
 
 import org.hibernate.annotations.GenericGenerator;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -16,7 +18,8 @@ import lombok.NoArgsConstructor;
 @Table(name = "employees")
 public class EmployeeEntity {
     @Id
-    @GeneratedValue
+    @GeneratedValue(generator = "uuid")
+    @GenericGenerator(name = "uuid", strategy = "uuid2")
     private UUID id;
     private String name;
     private String email;
@@ -25,4 +28,6 @@ public class EmployeeEntity {
     private String department;
     private String position;
     private String salary;
+    @JsonProperty("isActive")
+    private Boolean isActive;
 }

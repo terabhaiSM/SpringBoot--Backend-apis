@@ -20,6 +20,6 @@ public class EmployeeDTO {
     private String department;
     private String position;
     private String salary;
-    @JsonProperty("is_active")
-    private boolean isActive;
+    @JsonProperty("isActive")
+    private Boolean isActive;
 }
